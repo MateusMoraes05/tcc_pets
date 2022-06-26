@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'animalScreen.dart';
+import 'dogScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -40,25 +42,27 @@ class _MyHomePageState extends State<MyHomePage> {
             const Padding(
               padding: EdgeInsets.only(bottom: 30.0),
               child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Colors.black),
-                      labelText: "Search Pets",
-                      labelStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(1000, 65, 123, 90),
-                              width: 1.0)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(1000, 65, 123, 90),
-                              width: 1.0)))),
+                decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black),
+                  labelText: "Search Pets",
+                  labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(1000, 65, 123, 90),
+                          width: 1.0)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(1000, 65, 123, 90), width: 1.0),
+                  ),
+                ),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.only(bottom: 10.0),
-              child: Text("Filter Your Search",
+              child: Text("Pesquisa por raça",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -76,24 +80,37 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: IconButton(
-                      onPressed: () => {},
-                      icon: Image.network(
-                        "https://img.icons8.com/ios-filled/25/26e07f/dog--v1.png",
+                      onPressed: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => dogScreen()),
+                            )
+                          },
+                      icon: Image.asset(
+                        "src/dog--v1.png",
                       )),
                 ),
                 Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromARGB(1000, 65, 123, 90)),
-                      borderRadius: BorderRadius.circular(12),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: const Color.fromARGB(1000, 65, 123, 90)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: IconButton(
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => animalScreen()),
+                      )
+                    },
+                    icon: Image.asset(
+                      "src/cat--v1.png",
                     ),
-                    child: IconButton(
-                        onPressed: () => {},
-                        icon: Image.network(
-                          "https://img.icons8.com/ios-filled/25/26e07f/cat.png",
-                        ))),
+                  ),
+                ),
               ],
             )
           ],
